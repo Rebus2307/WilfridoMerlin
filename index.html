@@ -18,6 +18,13 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    
+    <script>
+        // Apply theme immediately to prevent FOUC (flash of unstyled content)
+        const localTheme = localStorage.getItem('theme');
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', localTheme || systemTheme);
+    </script>
 </head>
 
 <body>
@@ -36,6 +43,12 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li>
+                    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                        <i class="ph ph-sun theme-sun-icon"></i>
+                        <i class="ph ph-moon theme-moon-icon"></i>
+                    </button>
+                </li>
             </ul>
         </div>
     </nav>
